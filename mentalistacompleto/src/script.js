@@ -5,33 +5,33 @@ var resultado = document.getElementById("resultado");
 var chute = parseInt(document.getElementById("valor").value);
 
 function Chutar() {
-  
   while (numeroErros != tentativa) {
-    
     chute = parseInt(document.getElementById("valor").value);
     console.log(chute);
 
-    if (chute > 10 || chute < 0) {
+    if (chute == numeroSecreto) {
+      return (resultado.innerHTML = "Você acertou !!");
+    } else if (chute > 10 || chute < 0) {
       return (resultado.innerHTML = "Tente digitar um número entre 0 a 10");
     } else if (chute > numeroSecreto) {
       resultado.innerHTML = "Tente digitar um número menor " + chute;
     } else if (chute < numeroSecreto) {
       resultado.innerHTML = "Tente digitar um número maior " + chute;
-    }else if (chute == numeroSecreto){
-      resultado.innerHTML = "Você acertou !!";
     }
-    return numeroErros++;
+    numeroErros++;
     break;
   }
 
   if (numeroErros == tentativa) {
-    resultado.innerHTML = "Você excedeu o numeros de tentativas, o número correto era " + numeroSecreto;
+    resultado.innerHTML =
+      "Você excedeu o numeros de tentativas, o número correto era " +
+      numeroSecreto;
     novojogo.innerHTML = "Vamos Jogar novamente? ";
   }
 }
 
 function reiniciarJogo() {
-  numeroErros = 0
+  numeroErros = 0;
 
   var reiniciarParas = document.getElementById("valor").value;
   for (var i = 0; i < reiniciarParas.length; i++) {
@@ -52,3 +52,4 @@ var reiniciarParas = document.getElementById("valor").value;
 for (var i = 0; i < reiniciarParas.length; i++) {
   reiniciarParas[i].textContent = "";
 }
+
